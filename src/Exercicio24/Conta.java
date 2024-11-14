@@ -47,10 +47,10 @@ public class Conta {
     }
 
     private void validarSaque(double valor) {
-        if (valor > getLimiteSaque()) {
+        if (valor > getLimiteSaque() && valor > getSaldo() + getLimiteSaque()) {
             throw new ContaExcecoes("Erro de saque: A quantia excede o limite de saque");
         }
-        if (valor > getSaldo()) {
+        if (valor > getSaldo() && valor > getLimiteSaque()) {
             throw new ContaExcecoes("Erro de saque: Saldo insuficiente");
         }
     }
